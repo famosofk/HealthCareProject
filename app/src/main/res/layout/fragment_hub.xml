@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HubFragment">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/hub_screen" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99003b8e"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/appointmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textSize="24sp"
+            android:text="Consultar" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:background="?android:attr/listDivider" />
+
+        <Button
+            android:id="@+id/vaccineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:background="@android:color/transparent"
+            android:layout_weight="1"
+            android:text="Vacinar" />
+    </LinearLayout>
+
+</FrameLayout>

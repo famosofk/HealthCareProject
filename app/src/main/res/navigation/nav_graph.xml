@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.fgomes.healthcareproject.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.fgomes.healthcareproject.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_hubFragment"
+            app:destination="@id/hubFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hubFragment"
+        android:name="com.fgomes.healthcareproject.ui.hub.HubFragment"
+        android:label="fragment_hub"
+        tools:layout="@layout/fragment_hub" >
+        <action
+            android:id="@+id/action_hubFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.fgomes.healthcareproject.ui.list.ListFragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" >
+        <argument
+            android:name="ScreenTitle"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_listFragment_to_consultationCreationFragment"
+            app:destination="@id/consultationCreationFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_vaccineCreationFragment"
+            app:destination="@id/vaccineCreationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultationCreationFragment"
+        android:name="com.fgomes.healthcareproject.ui.consultation.ConsultationCreationFragment"
+        android:label="consultation_creation_fragment"
+        tools:layout="@layout/consultation_creation_fragment" >
+        <argument
+            android:name="isEdit"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="model"
+            app:argType="com.fgomes.healthcareproject.data.model.ConsultationModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaccineCreationFragment"
+        android:name="com.fgomes.healthcareproject.ui.vaccine.VaccineCreationFragment"
+        android:label="vaccine_creation_fragment"
+        tools:layout="@layout/vaccine_creation_fragment" >
+        <argument
+            android:name="isEdit"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="model"
+            app:argType="com.fgomes.healthcareproject.data.model.VaccineModel" />
+    </fragment>
+</navigation>
