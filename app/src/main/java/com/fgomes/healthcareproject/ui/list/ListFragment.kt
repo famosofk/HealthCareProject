@@ -60,7 +60,8 @@ class ListFragment : Fragment() {
         val adapter = RecyclerListAdapter(
             type,
             listener,
-            clickListenerFactory.list
+            clickListenerFactory.list,
+            viewModel.getUserType()
         )
 
         clickListenerFactory.currentAdapter = adapter
