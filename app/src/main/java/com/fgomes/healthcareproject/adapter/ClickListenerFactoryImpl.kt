@@ -18,6 +18,7 @@ class ClickListenerFactoryImpl: ClickListenerFactory {
         return object : ClickListener {
             override fun onClick(position: Int, isDelete: Boolean, isEdit: Boolean) {
                 if (currentOperation == ScreenType.NON_INITIALIZED) return
+
                 when {
                     isDelete -> {
                         handleRemoveItem(position)

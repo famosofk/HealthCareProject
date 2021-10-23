@@ -1,6 +1,7 @@
 package com.fgomes.healthcareproject.data
 
 import com.fgomes.healthcareproject.data.model.BaseModel
+import com.fgomes.healthcareproject.data.model.ConsultationModel
 import com.fgomes.healthcareproject.data.model.VaccineModel
 import com.fgomes.healthcareproject.data.model.user.Doctor
 import com.fgomes.healthcareproject.data.model.user.Patient
@@ -15,5 +16,5 @@ interface LocalMemory {
     val patients: MutableList<Patient>
     fun getMockList(type: ScreenType): MutableList<BaseModel>
     fun addVaccine(item: VaccineModel)
-    fun addConsultation(item: VaccineModel)
+    fun addConsultation(item: ConsultationModel)
 }

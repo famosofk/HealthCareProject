@@ -61,6 +61,9 @@
             app:argType="com.fgomes.healthcareproject.data.model.ConsultationModel"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_consultationCreationFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/vaccineCreationFragment"

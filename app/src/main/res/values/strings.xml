@@ -8,4 +8,6 @@
     <string name="consultation_title">Título da consulta</string>
     <string name="pick_a_date">Escolha a data</string>
     <string name="confirmar">Confirmar</string>
+    <string name="consultation">Consultar</string>
+    <string name="vaccine">Vacinar</string>
 </resources>

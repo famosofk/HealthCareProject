@@ -10,6 +10,6 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { VaccineCreationViewModel() }
-    viewModel { ConsultationCreationViewModel() }
+    viewModel { ConsultationCreationViewModel(get(), get()) }
     viewModel { ListViewModel(get()) }
 }

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HubFragment">
+    tools:context="ui.hub.HubFragment">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
@@ -27,7 +26,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:textSize="24sp"
-            android:text="Consultar" />
+            android:text="@string/consultation" />
 
         <View
             android:id="@+id/divider"
@@ -46,7 +45,7 @@
             android:textSize="24sp"
             android:background="@android:color/transparent"
             android:layout_weight="1"
-            android:text="Vacinar" />
+            android:text="@string/vaccine" />
     </LinearLayout>
 
 </FrameLayout>

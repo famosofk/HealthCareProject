@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fgomes.healthcareproject.R
 import com.fgomes.healthcareproject.adapter.ClickListenerFactory
-import com.fgomes.healthcareproject.adapter.ClickListenerFactoryImpl
 import com.fgomes.healthcareproject.adapter.RecyclerListAdapter
 import com.fgomes.healthcareproject.databinding.ListFragmentBinding
 import com.fgomes.healthcareproject.enums.ScreenType
@@ -61,7 +60,8 @@ class ListFragment : Fragment() {
             type,
             listener,
             clickListenerFactory.list,
-            viewModel.getUserType()
+            viewModel.getUserType(),
+            requireContext()
         )
 
         clickListenerFactory.currentAdapter = adapter
