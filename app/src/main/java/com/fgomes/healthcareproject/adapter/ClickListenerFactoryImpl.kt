@@ -1,7 +1,6 @@
 package com.fgomes.healthcareproject.adapter
 
 import android.os.Bundle
-import android.util.Log
 import androidx.navigation.NavController
 import com.fgomes.healthcareproject.R
 import com.fgomes.healthcareproject.data.model.BaseModel
@@ -46,7 +45,7 @@ class ClickListenerFactoryImpl: ClickListenerFactory {
 
     private fun createBundle(position: Int): Bundle {
         val bundle = Bundle()
-        bundle.putParcelable(
+        bundle.putSerializable(
             "model", if (currentOperation == ScreenType.CONSULTATION) {
                 list[position] as ConsultationModel
             } else {

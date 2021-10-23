@@ -1,40 +1,23 @@
 package com.fgomes.healthcareproject.data.model
 
-import android.os.Parcel
-import android.os.Parcelable
+import com.fgomes.healthcareproject.data.model.user.Doctor
+import com.fgomes.healthcareproject.data.model.user.Patient
+import java.io.Serializable
 
 data class ConsultationModel(
     override val id: String,
     override val title: String,
     override val date: String,
-    override val doctor: String,
-) : BaseModel, Parcelable {
-    constructor(parcel: Parcel) : this(
-        id = parcel.readString() ?: "",
-        title = parcel.readString() ?: "",
-        date = parcel.readString() ?: "",
-        doctor = parcel.readString() ?: ""
-    )
+    override val doctor: Doctor? = null,
+    override val patient: Patient? = null,
+    override var finished: Boolean = false,
+    val symptoms: MutableList<String> = mutableListOf()
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(id)
-        parcel.writeString(title)
-        parcel.writeString(date)
-        parcel.writeString(doctor)
+) :Serializable , BaseModel {
+    fun finishAppointment(){
+        finished = true
     }
-
-    override fun describeContents(): Int {
-        return 0
+    fun addSymptoms(symptom: String) {
+        symptoms.add(symptom)
     }
-
-    companion object CREATOR : Parcelable.Creator<ConsultationModel> {
-        override fun createFromParcel(parcel: Parcel): ConsultationModel {
-            return ConsultationModel(parcel)
-        }
-
-        override fun newArray(size: Int): Array<ConsultationModel?> {
-            return arrayOfNulls(size)
-        }
-    }
-
 }
