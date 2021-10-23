@@ -7,4 +7,5 @@ import com.fgomes.healthcareproject.enums.UserTypes
 interface LocalMemory {
     var userType :UserTypes
     fun getMockList(type: ScreenType): MutableList<BaseModel>
+    fun addOnList(type: ScreenType, item: BaseModel)
 }
