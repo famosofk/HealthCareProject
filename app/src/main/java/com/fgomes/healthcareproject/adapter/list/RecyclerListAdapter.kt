@@ -32,9 +32,7 @@ class RecyclerListAdapter(
             initClickListeners(position)
             binding.listTitle.text = item.title
             binding.listDate.text = item.date.toStringDate()
-            if (item.finished) {
-                binding.linearLayout.setBackgroundColor(context.getColor(R.color.finishedAppointment))
-            }
+            binding.linearLayout.setBackgroundColor(context.getColor(if (item.finished) R.color.finishedAppointment else R.color.white))
 
             if (userType == UserTypes.PATIENT || type == ScreenType.VACCINE) {
                 binding.deleteButton.isVisible = false
