@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/vaccineCreationTitle" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/confirmButton"
         android:layout_width="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"

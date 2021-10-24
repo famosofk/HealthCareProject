@@ -11,9 +11,9 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
-    viewModel { ConsultationCreationViewModel(get(), get()) }
-    viewModel { ListViewModel(get()) }
-    viewModel { VaccineCardViewModel(get()) }
+    viewModel { ConsultationCreationViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { ListViewModel(get(), get()) }
+    viewModel { VaccineCardViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { HubViewModel(get()) }
     viewModel { VaccineCreationViewModel(get(), get()) }
 }

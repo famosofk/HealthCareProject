@@ -1,13 +1,13 @@
 package com.fgomes.healthcareproject.ui.hub
 
 import androidx.lifecycle.ViewModel
-import com.fgomes.healthcareproject.data.LocalMemory
 import com.fgomes.healthcareproject.enums.UserTypes
+import com.fgomes.healthcareproject.usecases.GetUserTypeUseCase
 
-class HubViewModel(val localMemory: LocalMemory) : ViewModel() {
+class HubViewModel(private val getUserType: GetUserTypeUseCase) : ViewModel() {
 
     fun getUserType(): UserTypes {
-        return localMemory.userType
+        return getUserType.run()
     }
 
 }

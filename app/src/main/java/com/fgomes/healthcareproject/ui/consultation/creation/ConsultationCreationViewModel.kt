@@ -3,62 +3,60 @@ package com.fgomes.healthcareproject.ui.consultation.creation
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import com.fgomes.healthcareproject.data.LocalMemory
-import com.fgomes.healthcareproject.data.model.ConsultationModel
 import com.fgomes.healthcareproject.data.model.user.Doctor
 import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.usecases.*
 import java.lang.Exception
 import java.time.LocalDate
-import java.util.*
 
 class ConsultationCreationViewModel(
-    private val localMemory: LocalMemory,
+    private val getDoctorsNameList: GetDoctorsNameListUseCase,
+    private val getPatientsNameList: GetPatientsNameListUseCase,
+    private val getDoctorByName: GetDoctorByNameUseCase,
+    private val getPatientByName: GetPatientByNameUseCase,
+    private val saveConsultation: SaveConsultationUseCase,
     application: Application
 ) : AndroidViewModel(
     application
 ) {
 
     fun getDoctorListName(): Array<String> {
-        return localMemory.doctors.map { it.name }.toTypedArray()
+        return getDoctorsNameList.run()
     }
 
     fun getPatientsNameList(): Array<String> {
-        return localMemory.patients.map { it.name }.toTypedArray()
+        return getPatientsNameList.run()
     }
 
-    fun getDoctorByName(name: String): Doctor? {
+    private fun getDoctorByName(name: String): Doctor? {
         return try {
-            localMemory.doctors.find {
-                it.name.trim().lowercase().contains(name.trim().lowercase())
-            }!!
+            getDoctorByName.run(name)
         } catch (e: Exception) {
             throwException("Doctor not found")
             null
         }
     }
 
-    fun getPatientByName(name: String): Patient? {
+    private fun getPatientByName(name: String): Patient? {
         return try {
-            localMemory.patients.find {
-                it.name.trim().lowercase().contains(name.trim().lowercase())
-            }!!
+            getPatientByName.run(name)
         } catch (e: Exception) {
             throwException("Patient not found")
             null
         }
     }
 
-    fun saveConsultation(title: String, date: LocalDate, doctor: String, patient: String) {
-        val consultation = ConsultationModel(
-            id = UUID.randomUUID().toString(),
-            title = title,
-            date = date,
-            doctor = getDoctorByName(doctor),
-            patient = getPatientByName(patient),
-        )
-        localMemory.addConsultation(consultation)
-
+    fun saveConsultation(title: String, date: LocalDate, doctor: String, patient: String): Boolean {
+        return try {
+            val doctorModel = getDoctorByName(doctor)!!
+            val patientModel = getPatientByName(patient)!!
+            saveConsultation.run(title, date, doctorModel, patientModel)
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
+
 
     private fun throwException(message: String) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show()

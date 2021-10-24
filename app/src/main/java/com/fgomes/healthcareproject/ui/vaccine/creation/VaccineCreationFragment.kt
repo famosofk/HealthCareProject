@@ -33,15 +33,10 @@ class VaccineCreationFragment : Fragment() {
 
     private fun configUI(binding: VaccineCreationFragmentBinding) {
         val patient = requireArguments().getSerializable(PATIENT) as Patient
-        binding.button2.setOnClickListener {
+        binding.confirmButton.setOnClickListener {
             val title = binding.vaccineCreationTitle.text.toString()
-            if (title.isNotEmpty()) {
-                Toast.makeText(
-                    requireContext(),
-                    "Insira um título para a vacina",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
+            if (title.isEmpty()) {
+                showEmptyNameVaccineAlert()
             } else {
                 viewModel.addVaccine(
                     title,
@@ -49,20 +44,7 @@ class VaccineCreationFragment : Fragment() {
                     requireArguments().getSerializable(DOCTOR) as Doctor,
                     patient,
                 )
-                val bundle = Bundle()
-                bundle.putSerializable(
-                    VaccineCardFragment.MODEL, VaccineModel(
-                        id = UUID.randomUUID().toString(),
-                        title = patient.name,
-                        date = LocalDate.now(),
-                        patient = patient
-
-                    )
-                )
-                findNavController().navigate(
-                    R.id.action_vaccineCreationFragment_to_vaccineCardFragment,
-                    bundle
-                )
+                navigateBackToVaccineCard(patient)
             }
         }
 
@@ -75,10 +57,32 @@ class VaccineCreationFragment : Fragment() {
 
     }
 
+    private fun showEmptyNameVaccineAlert() {
+        Toast.makeText(
+            requireContext(),
+            "Insira um título para a vacina",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun navigateBackToVaccineCard(patient: Patient) {
+        val bundle = Bundle()
+        bundle.putSerializable(
+            VaccineCardFragment.MODEL, VaccineModel(
+                id = UUID.randomUUID().toString(),
+                title = patient.name,
+                date = LocalDate.now(),
+                patient = patient
+            )
+        )
+        findNavController().navigate(
+            R.id.action_vaccineCreationFragment_to_vaccineCardFragment,
+            bundle
+        )
+    }
 
     companion object {
         const val DOCTOR = "doctor"
         const val PATIENT = "patient"
     }
-
 }

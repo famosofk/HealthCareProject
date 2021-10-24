@@ -49,13 +49,7 @@ class ConsultationCreationFragment : Fragment() {
         val title = binding.consultationName.text.toString()
         if (title.isEmpty()) {
             toast("Adicione um título para a consulta.")
-        } else {
-            viewModel.saveConsultation(
-                title = title,
-                date = localDate,
-                doctor = binding.selectDoctorField.text.toString(),
-                patient = binding.selectPatientField.text.toString()
-            )
+        } else if (hasFinishedProcess(title, binding)) {
             val bundle = Bundle()
             bundle.putString(ListFragment.SCREEN_TITLE, getString(R.string.consultation))
             findNavController().navigate(
@@ -63,6 +57,18 @@ class ConsultationCreationFragment : Fragment() {
                 bundle
             )
         }
+    }
+
+    private fun hasFinishedProcess(
+        title: String,
+        binding: ConsultationCreationFragmentBinding
+    ): Boolean {
+        return viewModel.saveConsultation(
+            title = title,
+            date = localDate,
+            doctor = binding.selectDoctorField.text.toString(),
+            patient = binding.selectPatientField.text.toString()
+        )
     }
 
     private fun toast(s: String) {

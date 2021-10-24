@@ -4,12 +4,19 @@ package com.fgomes.healthcareproject.ui.vaccine.card
 import androidx.lifecycle.ViewModel
 import com.fgomes.healthcareproject.adapter.list.ClickListener
 import com.fgomes.healthcareproject.adapter.vaccine.VaccineAdapter
-import com.fgomes.healthcareproject.data.LocalMemory
 import com.fgomes.healthcareproject.data.model.VaccineModel
 import com.fgomes.healthcareproject.data.model.user.Patient
-import com.fgomes.healthcareproject.extensions.toStringDate
+import com.fgomes.healthcareproject.usecases.*
 
-class VaccineCardViewModel(val localMemory: LocalMemory) : ViewModel() {
+class VaccineCardViewModel(
+    private val applyVaccine: ApplyVaccineUseCase,
+    private val filterVaccineList: FilterVaccineListUseCase,
+    private val getVaccineListByPatient: GetVaccineListByPatient,
+    private val getDefaultDoctor: GetDefaultDoctorUseCase,
+    private val getDefaultPatient: GetDefaultPatientUseCase,
+    private val getVaccineList: GetVaccineListUseCase,
+    private val getUserType: GetUserTypeUseCase
+) : ViewModel() {
 
     lateinit var patient: Patient
     lateinit var patientVaccineList: List<VaccineModel>
@@ -17,52 +24,30 @@ class VaccineCardViewModel(val localMemory: LocalMemory) : ViewModel() {
     lateinit var adapter: VaccineAdapter
 
     fun initDefaultPatient(): Patient {
-        return localMemory.patients[0]
+        return getDefaultPatient.run()
     }
 
     fun initAdapter(listener: ClickListener) {
-        adapter = VaccineAdapter(patientVaccineList, listener, localMemory.userType)
+        adapter = VaccineAdapter(patientVaccineList, listener, getUserType.run())
     }
 
-    fun getDoctor() = localMemory.doctors[0]
+    fun getDoctor() = getDefaultDoctor.run()
 
-    private fun getVaccineList() = localMemory.vaccineList
+    private fun getVaccineList() = getVaccineList.run()
 
     fun initVaccineListByPatient() {
-        val copy = mutableListOf<VaccineModel>()
-        getVaccineList().forEach { copy.add(it as VaccineModel) }
-        copy.removeIf { it.patient != patient }
-        patientVaccineList = copy.sortedBy { it.date.toEpochDay() }
+        patientVaccineList = getVaccineListByPatient.run(getVaccineList(), patient)
     }
 
-    fun filterVaccineList(s: String){
-        val list = patientVaccineList.filter {
-            when {
-                s.contains("/")  -> {
-                    it.date.toStringDate().contains(s)
-                }
-                s.trim().lowercase() == "apl" -> {
-                    it.finished
-                }
-                s.trim().lowercase() == "nao" -> {
-                    !it.finished
-                }
-                s.isEmpty() -> {
-                    true
-                }
-                else -> {
-                    it.title.lowercase().contains(s.lowercase())
-                }
-            }
-        }
+    fun filterVaccineList(s: String) {
+        val list = filterVaccineList.run(s, patientVaccineList)
         adapter.list = list.sortedBy { it.date.toEpochDay() }
         adapter.notifyDataSetChanged()
     }
 
     fun applyVaccine(position: Int) {
-        patientVaccineList[position].finished = true
+        applyVaccine.run(patientVaccineList[position])
         adapter.notifyDataSetChanged()
-        localMemory.applyVaccine(patientVaccineList[position])
     }
 
 }
