@@ -11,6 +11,7 @@ import com.fgomes.healthcareproject.databinding.FragmentHubBinding
 import com.fgomes.healthcareproject.enums.UserTypes
 import com.fgomes.healthcareproject.ui.list.ListFragment
 import org.koin.android.ext.android.inject
+import android.content.Intent
 
 
 class HubFragment : Fragment() {
@@ -42,6 +43,9 @@ class HubFragment : Fragment() {
             setOnClickListener {
                 if (viewModel.getUserType() == UserTypes.PATIENT) {
                     goToVaccineCard()
+                } else if (viewModel.getUserType() == UserTypes.NURSE) {
+                    val intent = Intent("android.media.action.IMAGE_CAPTURE")
+                    startActivity(intent)
                 } else {
                     goToListScreen(text.toString())
                 }
