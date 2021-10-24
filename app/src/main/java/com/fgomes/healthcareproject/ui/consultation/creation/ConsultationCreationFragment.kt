@@ -1,4 +1,4 @@
-package com.fgomes.healthcareproject.ui.consultation
+package com.fgomes.healthcareproject.ui.consultation.creation
 
 
 import android.os.Build

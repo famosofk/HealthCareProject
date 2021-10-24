@@ -1,4 +1,4 @@
-package com.fgomes.healthcareproject.adapter
+package com.fgomes.healthcareproject.adapter.list
 
 import androidx.navigation.NavController
 import com.fgomes.healthcareproject.data.model.BaseModel

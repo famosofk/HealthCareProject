@@ -1,4 +1,4 @@
-package com.fgomes.healthcareproject.adapter
+package com.fgomes.healthcareproject.adapter.list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -26,20 +26,21 @@ class RecyclerListAdapter(
         private val binding: ListItemBinding,
         private val type: ScreenType,
         private val listener: ClickListener,
-        val userType: UserTypes, val context: Context
+        private val userType: UserTypes, val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BaseModel, position: Int) {
             initClickListeners(position)
             binding.listTitle.text = item.title
             binding.listDate.text = item.date.toStringDate()
-
             if (item.finished) {
                 binding.linearLayout.setBackgroundColor(context.getColor(R.color.finishedAppointment))
             }
 
-            if (userType == UserTypes.PATIENT) {
+            if (userType == UserTypes.PATIENT || type == ScreenType.VACCINE) {
                 binding.deleteButton.isVisible = false
                 binding.editButton.isVisible = false
+                binding.listDate.isVisible = false
+                binding.listTitle.textSize = 18f
             }
         }
 

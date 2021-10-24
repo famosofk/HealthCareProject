@@ -11,7 +11,7 @@ class ListViewModel(private val localMemory: LocalMemory) : ViewModel() {
         localMemory.userType
 
     fun getItemList(type: ScreenType): MutableList<BaseModel> {
-        val list = localMemory.getMockList(type)
-        return list.sortedBy { it.date.toEpochDay() }.toMutableList()
+        val list = localMemory.getMockList(type).sortedBy { it.date.toEpochDay() }.toMutableList()
+        return list
     }
 }

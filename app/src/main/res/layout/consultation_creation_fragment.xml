@@ -11,7 +11,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:minHeight="720dp"
-        tools:context=".ui.consultation.ConsultationCreationFragment">
+        tools:context=".ui.consultation.creation.ConsultationCreationFragment">
 
         <TextView
             android:id="@+id/title"

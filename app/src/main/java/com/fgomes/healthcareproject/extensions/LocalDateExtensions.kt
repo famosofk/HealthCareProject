@@ -7,3 +7,6 @@ import java.time.format.FormatStyle
 fun LocalDate.toStringDate(): String {
     return this.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM))
 }
+fun LocalDate.toNumberDate(): String {
+    return this.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT))
+}

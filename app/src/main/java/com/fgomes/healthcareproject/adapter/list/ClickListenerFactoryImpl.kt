@@ -1,4 +1,4 @@
-package com.fgomes.healthcareproject.adapter
+package com.fgomes.healthcareproject.adapter.list
 
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -7,8 +7,9 @@ import com.fgomes.healthcareproject.data.model.BaseModel
 import com.fgomes.healthcareproject.data.model.ConsultationModel
 import com.fgomes.healthcareproject.data.model.VaccineModel
 import com.fgomes.healthcareproject.enums.ScreenType
+import com.fgomes.healthcareproject.ui.vaccine.card.VaccineCardFragment
 
-class ClickListenerFactoryImpl: ClickListenerFactory {
+class ClickListenerFactoryImpl : ClickListenerFactory {
 
     override var list = mutableListOf<BaseModel>()
     override var currentOperation = ScreenType.NON_INITIALIZED
@@ -41,13 +42,20 @@ class ClickListenerFactoryImpl: ClickListenerFactory {
     }
 
     private fun navigateToVisualize(navController: NavController, bundle: Bundle) {
-        throw NotImplementedError() //TODO("Not yet implemented")
+        navController.navigate(
+            if (currentOperation == ScreenType.CONSULTATION) {
+                R.id.action_listFragment_to_consultationVisualizationFragment
+            } else {
+                R.id.action_listFragment_to_vaccineCardFragment
+            },
+            bundle
+        )
     }
 
     private fun createBundle(position: Int): Bundle {
         val bundle = Bundle()
         bundle.putSerializable(
-            "model", if (currentOperation == ScreenType.CONSULTATION) {
+            VaccineCardFragment.MODEL, if (currentOperation == ScreenType.CONSULTATION) {
                 list[position] as ConsultationModel
             } else {
                 list[position] as VaccineModel
@@ -61,7 +69,7 @@ class ClickListenerFactoryImpl: ClickListenerFactory {
             if (currentOperation == ScreenType.CONSULTATION) {
                 R.id.action_listFragment_to_consultationCreationFragment
             } else {
-                R.id.action_listFragment_to_vaccineCreationFragment
+                R.id.action_listFragment_to_vaccineCardFragment
             }, bundle
         )
     }

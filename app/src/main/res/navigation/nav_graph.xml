@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_hubFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_hubFragment_to_vaccineCardFragment"
+            app:destination="@id/vaccineCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -44,12 +47,15 @@
             android:id="@+id/action_listFragment_to_consultationCreationFragment"
             app:destination="@id/consultationCreationFragment" />
         <action
-            android:id="@+id/action_listFragment_to_vaccineCreationFragment"
-            app:destination="@id/vaccineCreationFragment" />
+            android:id="@+id/action_listFragment_to_vaccineCardFragment"
+            app:destination="@id/vaccineCardFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_consultationVisualizationFragment"
+            app:destination="@id/consultationVisualizationFragment" />
     </fragment>
     <fragment
         android:id="@+id/consultationCreationFragment"
-        android:name="com.fgomes.healthcareproject.ui.consultation.ConsultationCreationFragment"
+        android:name="com.fgomes.healthcareproject.ui.consultation.creation.ConsultationCreationFragment"
         android:label="consultation_creation_fragment"
         tools:layout="@layout/consultation_creation_fragment" >
         <argument
@@ -67,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/vaccineCreationFragment"
-        android:name="com.fgomes.healthcareproject.ui.vaccine.VaccineCreationFragment"
+        android:name="com.fgomes.healthcareproject.ui.vaccine.creation.VaccineCreationFragment"
         android:label="vaccine_creation_fragment"
         tools:layout="@layout/vaccine_creation_fragment" >
         <argument
@@ -77,5 +83,22 @@
         <argument
             android:name="model"
             app:argType="com.fgomes.healthcareproject.data.model.VaccineModel" />
+        <action
+            android:id="@+id/action_vaccineCreationFragment_to_vaccineCardFragment"
+            app:destination="@id/vaccineCardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/vaccineCardFragment"
+        android:name="com.fgomes.healthcareproject.ui.vaccine.card.VaccineCardFragment"
+        android:label="vaccine_card_fragment"
+        tools:layout="@layout/vaccine_card_fragment" >
+        <action
+            android:id="@+id/action_vaccineCardFragment_to_vaccineCreationFragment"
+            app:destination="@id/vaccineCreationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultationVisualizationFragment"
+        android:name="com.fgomes.healthcareproject.ui.consultation.visualization.ConsultationVisualizationFragment"
+        android:label="consultation_visualization_fragment"
+        tools:layout="@layout/consultation_visualization_fragment" />
 </navigation>

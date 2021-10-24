@@ -9,7 +9,7 @@ import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.enums.UserTypes
 
 interface LocalMemory {
-    var userType :UserTypes
+    var userType: UserTypes
     val consultationList: MutableList<BaseModel>
     val vaccineList: MutableList<BaseModel>
     val doctors: MutableList<Doctor>
@@ -17,4 +17,5 @@ interface LocalMemory {
     fun getMockList(type: ScreenType): MutableList<BaseModel>
     fun addVaccine(item: VaccineModel)
     fun addConsultation(item: ConsultationModel)
+    fun applyVaccine(vaccineModel: VaccineModel)
 }

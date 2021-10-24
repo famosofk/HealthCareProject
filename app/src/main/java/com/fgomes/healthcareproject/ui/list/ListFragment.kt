@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fgomes.healthcareproject.R
-import com.fgomes.healthcareproject.adapter.ClickListenerFactory
-import com.fgomes.healthcareproject.adapter.RecyclerListAdapter
+import com.fgomes.healthcareproject.adapter.list.ClickListenerFactory
+import com.fgomes.healthcareproject.adapter.list.RecyclerListAdapter
 import com.fgomes.healthcareproject.databinding.ListFragmentBinding
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.enums.UserTypes
@@ -18,7 +18,7 @@ class ListFragment : Fragment() {
 
     private val viewModel: ListViewModel by inject()
     private lateinit var type: ScreenType
-    val clickListenerFactory: ClickListenerFactory by inject()
+    private val clickListenerFactory: ClickListenerFactory by inject()
 
 
     override fun onCreateView(
@@ -35,17 +35,14 @@ class ListFragment : Fragment() {
         binding.toolbar.title = screenName
         type = ScreenType.fromValue(screenName.lowercase())
         clickListenerFactory.currentOperation = type
-        if (viewModel.getUserType() == UserTypes.PATIENT) {
+        if (viewModel.getUserType() == UserTypes.PATIENT || type == ScreenType.VACCINE) {
             binding.floatingActionButton.visibility = View.GONE
         }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(
-                if (type == ScreenType.CONSULTATION) {
-                    R.id.action_listFragment_to_consultationCreationFragment
-                } else {
-                    R.id.action_listFragment_to_vaccineCreationFragment
-                }
+                R.id.action_listFragment_to_consultationCreationFragment
+
             )
 
         }

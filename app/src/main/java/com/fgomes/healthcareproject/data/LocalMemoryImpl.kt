@@ -9,6 +9,7 @@ import com.fgomes.healthcareproject.data.model.user.Sex
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.enums.UserTypes
 import java.time.LocalDate
+import java.util.*
 
 
 class LocalMemoryImpl : LocalMemory {
@@ -98,25 +99,29 @@ class LocalMemoryImpl : LocalMemory {
             id = "1",
             title = "Varíola",
             date = LocalDate.parse("2021-10-30"),
-            doctor = null
+            doctor = doctors[1],
+            patient = patients[0]
         ),
         VaccineModel(
             id = "2",
             title = "Pfizer dose 1",
             date = LocalDate.parse("2021-10-30"),
-            doctor = null
+            doctor = doctors[0],
+            patient = patients[0]
         ),
         VaccineModel(
             id = "3",
             title = "Pfizer dose 2",
             date = LocalDate.parse("2022-05-10"),
-            doctor = null
+            doctor = doctors[1],
+            patient = patients[1]
         ),
         VaccineModel(
             id = "4",
             title = "Sarampo",
             date = LocalDate.parse("2022-07-13"),
-            doctor = null
+            doctor = doctors[0],
+            patient = patients[1]
         ),
     )
 
@@ -127,7 +132,14 @@ class LocalMemoryImpl : LocalMemory {
         return if (type == ScreenType.CONSULTATION) {
             consultationList
         } else {
-            vaccineList
+            patients.map { VaccineModel(
+                id = UUID.randomUUID().toString(),
+                title = it.name,
+                date = LocalDate.now(),
+                doctor = null,
+                patient = it
+            )
+            }.toMutableList()
         }
     }
 
@@ -137,6 +149,12 @@ class LocalMemoryImpl : LocalMemory {
 
     override fun addConsultation(item: ConsultationModel) {
         consultationList.add(item)
+    }
+
+    override fun applyVaccine(vaccineModel: VaccineModel) {
+        vaccineList.remove(vaccineModel)
+        vaccineModel.finished = true
+        vaccineList.add(vaccineModel)
     }
 
 }
