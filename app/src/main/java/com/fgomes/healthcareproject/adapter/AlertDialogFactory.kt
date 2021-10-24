@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.fgomes.healthcareproject.databinding.AlertDialogLayoutBinding
 
 object AlertDialogFactory {
@@ -20,8 +21,12 @@ object AlertDialogFactory {
         val dialog = builder.create()
         binding.apply {
             title.text = type.value
+            val shouldDisplayQrCode = type == AlertDialogType.QRCODE
+            binding.inputField.isVisible = !shouldDisplayQrCode
+            binding.imageView.isVisible = shouldDisplayQrCode
             submitButton.setOnClickListener {
                 val value = binding.inputField.text.toString()
+
                 if (value.isNotEmpty()) {
                     doOnSuccess(value)
                     dialog.dismiss()
@@ -43,6 +48,7 @@ object AlertDialogFactory {
 
 enum class AlertDialogType(val value: String) {
     MEDICIME("Adicionar medicamento"),
-    SYMPTOM("Adicionar sintoma")
+    SYMPTOM("Adicionar sintoma"),
+    QRCODE("Mostre ao enfermeiro")
 
 }

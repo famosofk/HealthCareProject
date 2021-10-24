@@ -1,6 +1,7 @@
 package com.fgomes.healthcareproject.ui.vaccine.card
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fgomes.healthcareproject.R
+import com.fgomes.healthcareproject.adapter.AlertDialogFactory
+import com.fgomes.healthcareproject.adapter.AlertDialogType
 import com.fgomes.healthcareproject.adapter.list.ClickListener
 import com.fgomes.healthcareproject.model.VaccineModel
 import com.fgomes.healthcareproject.databinding.VaccineCardFragmentBinding
@@ -52,7 +55,13 @@ class VaccineCardFragment : Fragment() {
                 bundle
             )
         }
+        binding.qrCodeScanner.setOnClickListener {
+            AlertDialogFactory.displayAlertDialog(requireContext(), AlertDialogType.QRCODE, ::qrCodeSuccess)
+        }
+    }
 
+    private fun qrCodeSuccess(value: String) {
+        Log.e("QrCodeScanner", "Success: $value")
     }
 
     private fun generateItemClickListener(): ClickListener {
