@@ -1,7 +1,7 @@
-package com.fgomes.healthcareproject.data.model
+package com.fgomes.healthcareproject.model
 
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
 import java.io.Serializable
 import java.time.LocalDate
 

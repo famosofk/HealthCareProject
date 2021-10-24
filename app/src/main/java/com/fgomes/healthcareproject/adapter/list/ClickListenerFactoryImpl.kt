@@ -3,9 +3,9 @@ package com.fgomes.healthcareproject.adapter.list
 import android.os.Bundle
 import androidx.navigation.NavController
 import com.fgomes.healthcareproject.R
-import com.fgomes.healthcareproject.data.model.BaseModel
-import com.fgomes.healthcareproject.data.model.ConsultationModel
-import com.fgomes.healthcareproject.data.model.VaccineModel
+import com.fgomes.healthcareproject.model.BaseModel
+import com.fgomes.healthcareproject.model.ConsultationModel
+import com.fgomes.healthcareproject.model.VaccineModel
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.ui.vaccine.card.VaccineCardFragment
 

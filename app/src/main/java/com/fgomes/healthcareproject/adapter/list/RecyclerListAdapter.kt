@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.fgomes.healthcareproject.R
-import com.fgomes.healthcareproject.data.model.BaseModel
+import com.fgomes.healthcareproject.model.BaseModel
 import com.fgomes.healthcareproject.databinding.ListItemBinding
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.enums.UserTypes

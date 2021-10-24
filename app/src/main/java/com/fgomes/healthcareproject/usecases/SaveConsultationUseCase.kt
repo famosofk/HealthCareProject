@@ -1,9 +1,9 @@
 package com.fgomes.healthcareproject.usecases
 
 import com.fgomes.healthcareproject.data.LocalMemory
-import com.fgomes.healthcareproject.data.model.ConsultationModel
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.ConsultationModel
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
 import java.time.LocalDate
 import java.util.*
 

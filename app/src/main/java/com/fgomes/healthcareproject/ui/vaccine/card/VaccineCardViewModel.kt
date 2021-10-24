@@ -4,8 +4,8 @@ package com.fgomes.healthcareproject.ui.vaccine.card
 import androidx.lifecycle.ViewModel
 import com.fgomes.healthcareproject.adapter.list.ClickListener
 import com.fgomes.healthcareproject.adapter.vaccine.VaccineAdapter
-import com.fgomes.healthcareproject.data.model.VaccineModel
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.VaccineModel
+import com.fgomes.healthcareproject.model.user.Patient
 import com.fgomes.healthcareproject.usecases.*
 
 class VaccineCardViewModel(

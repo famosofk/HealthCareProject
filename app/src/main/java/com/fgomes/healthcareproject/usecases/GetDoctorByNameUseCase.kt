@@ -1,7 +1,7 @@
 package com.fgomes.healthcareproject.usecases
 
 import com.fgomes.healthcareproject.data.LocalMemory
-import com.fgomes.healthcareproject.data.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Doctor
 
 class GetDoctorByNameUseCase(private val repository: LocalMemory) {
 

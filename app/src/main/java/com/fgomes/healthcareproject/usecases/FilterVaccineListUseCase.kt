@@ -1,6 +1,6 @@
 package com.fgomes.healthcareproject.usecases
 
-import com.fgomes.healthcareproject.data.model.VaccineModel
+import com.fgomes.healthcareproject.model.VaccineModel
 import com.fgomes.healthcareproject.extensions.toNumberDate
 
 class FilterVaccineListUseCase {

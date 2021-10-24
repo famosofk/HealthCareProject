@@ -1,4 +1,4 @@
-package com.fgomes.healthcareproject.data.model.user
+package com.fgomes.healthcareproject.model.user
 
 import java.io.Serializable
 

@@ -1,7 +1,7 @@
 package com.fgomes.healthcareproject.ui.list
 
 import androidx.lifecycle.ViewModel
-import com.fgomes.healthcareproject.data.model.BaseModel
+import com.fgomes.healthcareproject.model.BaseModel
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.usecases.GetItemListUseCase
 import com.fgomes.healthcareproject.usecases.GetUserTypeUseCase

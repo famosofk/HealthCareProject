@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.fgomes.healthcareproject.R
 import com.fgomes.healthcareproject.adapter.list.ClickListener
-import com.fgomes.healthcareproject.data.model.VaccineModel
+import com.fgomes.healthcareproject.model.VaccineModel
 import com.fgomes.healthcareproject.databinding.VaccineItemBinding
 import com.fgomes.healthcareproject.enums.UserTypes
 import com.fgomes.healthcareproject.extensions.toStringDate

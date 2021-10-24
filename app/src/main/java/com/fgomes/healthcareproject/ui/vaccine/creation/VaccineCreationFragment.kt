@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fgomes.healthcareproject.R
-import com.fgomes.healthcareproject.data.model.VaccineModel
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.VaccineModel
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
 import com.fgomes.healthcareproject.databinding.VaccineCreationFragmentBinding
 import com.fgomes.healthcareproject.ui.vaccine.card.VaccineCardFragment
 import org.koin.android.ext.android.inject

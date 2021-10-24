@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fgomes.healthcareproject.R
 import com.fgomes.healthcareproject.adapter.list.ClickListener
-import com.fgomes.healthcareproject.data.model.VaccineModel
+import com.fgomes.healthcareproject.model.VaccineModel
 import com.fgomes.healthcareproject.databinding.VaccineCardFragmentBinding
 import com.fgomes.healthcareproject.ui.vaccine.creation.VaccineCreationFragment
 import org.koin.android.ext.android.inject

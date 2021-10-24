@@ -2,8 +2,8 @@ package com.fgomes.healthcareproject.ui.vaccine.creation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
 import com.fgomes.healthcareproject.usecases.AddVaccineToPatientCardUseCase
 import java.time.LocalDate
 

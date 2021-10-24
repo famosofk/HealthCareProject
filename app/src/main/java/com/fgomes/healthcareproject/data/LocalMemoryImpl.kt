@@ -1,11 +1,11 @@
 package com.fgomes.healthcareproject.data
 
-import com.fgomes.healthcareproject.data.model.BaseModel
-import com.fgomes.healthcareproject.data.model.ConsultationModel
-import com.fgomes.healthcareproject.data.model.VaccineModel
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
-import com.fgomes.healthcareproject.data.model.user.Sex
+import com.fgomes.healthcareproject.model.BaseModel
+import com.fgomes.healthcareproject.model.ConsultationModel
+import com.fgomes.healthcareproject.model.VaccineModel
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
+import com.fgomes.healthcareproject.model.user.Sex
 import com.fgomes.healthcareproject.enums.ScreenType
 import com.fgomes.healthcareproject.enums.UserTypes
 import java.time.LocalDate

@@ -3,8 +3,8 @@ package com.fgomes.healthcareproject.ui.consultation.creation
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import com.fgomes.healthcareproject.data.model.user.Doctor
-import com.fgomes.healthcareproject.data.model.user.Patient
+import com.fgomes.healthcareproject.model.user.Doctor
+import com.fgomes.healthcareproject.model.user.Patient
 import com.fgomes.healthcareproject.usecases.*
 import java.lang.Exception
 import java.time.LocalDate
