@@ -18,4 +18,9 @@ interface LocalMemory {
     fun addVaccine(item: VaccineModel)
     fun addConsultation(item: ConsultationModel)
     fun applyVaccine(vaccineModel: VaccineModel)
+    fun addMedicine(consultationModel: ConsultationModel, position: Int): ConsultationModel
+    fun addSymptom(consultationModel: ConsultationModel, position: Int): ConsultationModel
+    fun addAtestadoConsultation(consultationModel: ConsultationModel, position: Int): ConsultationModel
+    fun finishConsultation(consultationModel: ConsultationModel, position: Int): ConsultationModel
+    fun getConsultationPosition(consultation: ConsultationModel): Int
 }

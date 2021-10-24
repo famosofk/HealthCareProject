@@ -64,7 +64,7 @@
             android:defaultValue="false" />
         <argument
             android:name="model"
-            app:argType="com.fgomes.healthcareproject.data.model.ConsultationModel"
+            app:argType="com.fgomes.healthcareproject.model.ConsultationModel"
             app:nullable="true"
             android:defaultValue="@null" />
         <action
@@ -82,7 +82,7 @@
             android:defaultValue="false" />
         <argument
             android:name="model"
-            app:argType="com.fgomes.healthcareproject.data.model.VaccineModel" />
+            app:argType="com.fgomes.healthcareproject.model.VaccineModel" />
         <action
             android:id="@+id/action_vaccineCreationFragment_to_vaccineCardFragment"
             app:destination="@id/vaccineCardFragment" />
@@ -100,5 +100,9 @@
         android:id="@+id/consultationVisualizationFragment"
         android:name="com.fgomes.healthcareproject.ui.consultation.visualization.ConsultationVisualizationFragment"
         android:label="consultation_visualization_fragment"
-        tools:layout="@layout/consultation_visualization_fragment" />
+        tools:layout="@layout/consultation_visualization_fragment" >
+        <argument
+            android:name="model"
+            app:argType="com.fgomes.healthcareproject.model.ConsultationModel" />
+    </fragment>
 </navigation>

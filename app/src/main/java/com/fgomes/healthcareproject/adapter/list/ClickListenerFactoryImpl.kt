@@ -38,7 +38,6 @@ class ClickListenerFactoryImpl : ClickListenerFactory {
     private fun handleVisualizeItem(position: Int, navController: NavController) {
         val bundle = createBundle(position)
         navigateToVisualize(navController, bundle)
-
     }
 
     private fun navigateToVisualize(navController: NavController, bundle: Bundle) {

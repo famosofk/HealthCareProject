@@ -11,4 +11,11 @@
     <string name="consultation">Consultar</string>
     <string name="vaccine">Vacinar</string>
     <string name="vaccine_title">Título da vacina</string>
+    <string name="no_atestado_found">Essa consulta ainda não gerou um atestado</string>
+    <string name="atestado">Atestado:</string>
+    <string name="generated_atestado">O atestado gerado foi enviado por email.</string>
+    <string name="cancel">Cancelar</string>
+    <string name="patient_data">Dados do paciente</string>
+    <string name="symptoms">Sintomas</string>
+    <string name="medicine">Medicamentos</string>
 </resources>

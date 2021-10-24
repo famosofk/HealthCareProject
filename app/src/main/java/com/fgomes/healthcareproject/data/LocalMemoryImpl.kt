@@ -75,7 +75,9 @@ class LocalMemoryImpl : LocalMemory {
             title = "Karen - Cardiologista",
             date = LocalDate.parse("2021-11-07"),
             doctor = doctors[0],
-            patient = patients[0]
+            patient = patients[0],
+            symptoms = mutableListOf("Sintoma 1", "Sintoma 2"),
+            medicines = mutableListOf("Medicine 1", "Medicine 2")
         ),
         ConsultationModel(
             id = "3",
@@ -132,13 +134,14 @@ class LocalMemoryImpl : LocalMemory {
         return if (type == ScreenType.CONSULTATION) {
             consultationList
         } else {
-            patients.map { VaccineModel(
-                id = UUID.randomUUID().toString(),
-                title = it.name,
-                date = LocalDate.now(),
-                doctor = null,
-                patient = it
-            )
+            patients.map {
+                VaccineModel(
+                    id = UUID.randomUUID().toString(),
+                    title = it.name,
+                    date = LocalDate.now(),
+                    doctor = null,
+                    patient = it
+                )
             }.toMutableList()
         }
     }
@@ -155,6 +158,35 @@ class LocalMemoryImpl : LocalMemory {
         vaccineList.remove(vaccineModel)
         vaccineModel.finished = true
         vaccineList.add(vaccineModel)
+    }
+
+    override fun addMedicine(consultationModel: ConsultationModel, position: Int): ConsultationModel {
+        return replaceConsultationItem(position, consultationModel)
+    }
+
+    override fun addSymptom(consultationModel: ConsultationModel, position: Int): ConsultationModel {
+        return  replaceConsultationItem(position, consultationModel)
+    }
+
+    override fun addAtestadoConsultation(consultationModel: ConsultationModel, position: Int) : ConsultationModel{
+        return replaceConsultationItem(position, consultationModel)
+    }
+
+    override fun finishConsultation(consultationModel: ConsultationModel, position: Int): ConsultationModel {
+        return replaceConsultationItem(position, consultationModel)
+    }
+
+    override fun getConsultationPosition(consultation: ConsultationModel): Int {
+        return consultationList.indexOf(consultation)
+    }
+
+    private fun replaceConsultationItem(
+        position: Int,
+        consultationModel: ConsultationModel
+    ): ConsultationModel {
+        consultationList.removeAt(position)
+        consultationList.add(consultationModel)
+        return consultationModel
     }
 
 }

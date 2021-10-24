@@ -12,9 +12,15 @@ data class ConsultationModel(
     override val doctor: Doctor? = null,
     override val patient: Patient? = null,
     override var finished: Boolean = false,
-    val symptoms: MutableList<String> = mutableListOf()
-
+    val symptoms: MutableList<String> = mutableListOf(),
+    val medicines: MutableList<String> = mutableListOf(),
+    var hasAtestado: Boolean = false
 ) : Serializable, BaseModel {
+
+    fun addMedicine(value: String) {
+        medicines.add(value)
+    }
+
     fun finishAppointment() {
         finished = true
     }

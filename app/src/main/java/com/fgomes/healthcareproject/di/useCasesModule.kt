@@ -19,4 +19,9 @@ val useCasesModule = module {
     single { GetDefaultPatientUseCase(get()) }
     single { GetDefaultDoctorUseCase(get()) }
     single { AddVaccineToPatientCardUseCase(get()) }
+    single { AddMedicineUseCase(get()) }
+    single { AddSymptomUseCase(get()) }
+    single { FinishConsultationUseCase(get()) }
+    single { GenerateAtestadoUseCase(get()) }
+    single { GetConsultationPositionUseCase(get()) }
 }
